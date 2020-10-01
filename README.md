@@ -40,8 +40,8 @@ Restart SSH server:
 sudo service ssh restart
 ```
 
-##Configure Firewalls
-#UFW
+## Configure Firewalls
+# UFW
 
 Allow ssh connection:
 ```
