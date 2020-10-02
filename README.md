@@ -77,14 +77,13 @@ https://github.com/chaifeng/ufw-docker/edit/master/README.md
 
 Let pg_dump write to a file inside the Docker container, then copy that out to the host:
 
-correct dumping procedure:
-
+### correct dumping procedure:
+```
 docker exec -ti my_postgres_container bash -c 'pg_dump -Fc -U postgres > /db.dump'
 docker cp my_postgres_container:/db.dump db.dump
-
-correct restoring procedure:
-
+```
+### correct restoring procedure:
+```
 docker cp db.dump my_postgres_container:/db.dump
 docker exec -ti my_postgres_container pg_restore -U postgres -c -d postgres db.dump
-
-
+```
