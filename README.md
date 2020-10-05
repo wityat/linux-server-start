@@ -70,8 +70,13 @@ This command does the following things:
 - Back up the file `/etc/ufw/after.rules`
 - Append the rules of UFW and Docker at the end of the file
 
+Expose the port 80 of the container httpd
+
+    ufw-docker allow httpd 80
+
+
 For more info about ufw-docker:
-https://github.com/chaifeng/ufw-docker/edit/master/README.md
+https://github.com/chaifeng/ufw-docker/master/README.md
 
 # PG BACKUP
 
