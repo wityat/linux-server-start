@@ -87,3 +87,31 @@ docker cp my_postgres_container:/db.dump db.dump
 docker cp db.dump my_postgres_container:/db.dump
 docker exec -ti my_postgres_container pg_restore -U postgres -c -d postgres db.dump
 ```
+
+postgre_backup.sh
+
+```
+#!/usr/bin/env bash
+
+pg_user="postgres"
+container_name="db"
+username="vic"
+
+docker exec -ti $container_name bash -c "pg_dump -Fc -U $pg_user > /db.dump"
+mkdir "/home/$username/backups/"
+cp "/home/$username/backups/new.dump" "/home/$username/backups/old.dump"
+docker cp $container_name:/db.dump "/home/$username/backups/new.dump"
+echo `date +"%Y%m%d%H%M"`
+```
+
+### push shedule task in cron linux
+
+crontab -e
+
+add at the end:
+
+```
+# m h  dom mon dow   command
+0 3 * * * /home/username/backups/backup.sh
+# empty line
+```
