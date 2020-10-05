@@ -76,7 +76,7 @@ Expose the port 80 of the container httpd
 
 
 For more info about ufw-docker:
-https://github.com/chaifeng/ufw-docker/master/README.md
+https://github.com/chaifeng/ufw-docker/blob/master/README.md
 
 # PG BACKUP
 
