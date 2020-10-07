@@ -19,12 +19,11 @@ sudo ssh-copy-id -i /home/USERNAME_YOUR_PC/.ssh/id_rsa_xasky_dev www@SERVER_IP`
 ```
 On server:
 ```
-addgroup wheel
-useradd -d /home/www -m -G wheel www -s /bin/bash
+useradd -d /home/www -m -G sudo www -s /bin/bash
 ```
 If cannot work with sudo under www then:
 ```
-usermod -a -G'wheel' www
+usermod -a -G 'sudo' www
 ```
 
 ```
