@@ -12,11 +12,6 @@ sudo apt-get install -y vim mosh tmux htop git curl wget unzip zip gcc build-ess
 
 ### Configure SSH:
 
-On your PC:
-```
-ssh-keygen
-sudo ssh-copy-id -i /home/USERNAME_YOUR_PC/.ssh/id_rsa_xasky_dev www@SERVER_IP`
-```
 On server:
 ```
 useradd -d /home/www -m -G sudo www -s /bin/bash
@@ -25,8 +20,10 @@ If cannot work with sudo under www then:
 ```
 usermod -a -G 'sudo' www
 ```
-
+Enter new password and deny connect as root
 ```
+sudo passwd www
+
 sudo vim /etc/ssh/sshd_config
     AllowUsers www
     PermitRootLogin no
@@ -37,6 +34,11 @@ Restart SSH server:
 
 ```
 sudo service ssh restart
+```
+On your PC:
+```
+ssh-keygen
+sudo ssh-copy-id -i /home/USERNAME_YOUR_PC/.ssh/id_rsa_xasky_dev www@SERVER_IP`
 ```
 
 # Configure Firewalls
@@ -59,7 +61,7 @@ Download `ufw-docker` script
 
     sudo wget -O /usr/local/bin/ufw-docker \
       https://github.com/chaifeng/ufw-docker/raw/master/ufw-docker
-    chmod +x /usr/local/bin/ufw-docker
+    sudo chmod +x /usr/local/bin/ufw-docker
 
 Then using the following command to modify the `after.rules` file of `ufw`
 
